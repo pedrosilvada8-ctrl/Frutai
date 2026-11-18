@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FrutiAI - Crie vídeos de frutas</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #10101b;
+  color: white;
+}
+header {
+  padding: 22px;
+  text-align: center;
+  background: #191929;
+}
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  color: #ffbd35;
+}
+main {
+  max-width: 650px;
+  margin: 35px auto;
+  padding: 20px;
+}
+.card {
+  background: #202035;
+  padding: 25px;
+  border-radius: 18px;
+}
+h1 { font-size: 28px; }
+p { color: #c7c7d8; line-height: 1.5; }
+textarea, select {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0 18px;
+  border-radius: 10px;
+  border: 0;
+  font-size: 16px;
+}
+button {
+  width: 100%;
+  padding: 16px;
+  border: 0;
+  border-radius: 10px;
+  background: #ffbd35;
+  color: #171717;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#result {
+  margin-top: 20px;
+  overflow-wrap: anywhere;
+}
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #aaa;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🍓 FrutiAI</div>
+  <p>Transforme ideias em histórias de frutas!</p>
+</header>
+
+<main>
+  <div class="card">
+    <h1>🎬 Crie seu vídeo</h1>
+    <p>Imagine uma história divertida e dê vida aos seus personagens!</p>
+
+    <label for="idea">Qual é a sua história?</label>
+    <textarea id="idea" rows="5"
+      placeholder="Ex: Uma banana se apaixona por uma moranguinha..."></textarea>
+
+    <label for="style">Estilo do vídeo</label>
+    <select id="style">
+      <option>Desenho animado 3D</option>
+      <option>Frutas realistas</option>
+      <option>Novela de frutas</option>
+      <option>Comédia infantil</option>
+    </select>
+
+    <label for="duration">Duração</label>
+    <select id="duration">
+      <option value="30">30 segundos</option>
+      <option value="60">1 minuto</option>
+      <option value="120">2 minutos</option>
+    </select>
+
+    <button onclick="createVideo()">✨ Criar minha história</button>
+
+    <div id="result"></div>
+  </div>
+</main>
+
+<footer>FrutiAI © 2026</footer>
+
+<script>
+function createVideo() {
+  const idea = document.getElementById("idea").value.trim();
+  const style = document.getElementById("style").value;
+  const duration = document.getElementById("duration").value;
+  const result = document.getElementById("result");
+
+  if (!idea) {
+    alert("Escreva sua história primeiro!");
+    return;
+  }
+
+  const safeIdea = document.createElement("p");
+  safeIdea.textContent = "História: " + idea;
+
+  result.replaceChildren();
+
+  const title = document.createElement("h3");
+  title.textContent = "🍌 Sua ideia foi recebida!";
+  result.appendChild(title);
+  result.appendChild(safeIdea);
+
+  const details = document.createElement("p");
+  details.textContent =
+    "Estilo: " + style + " | Duração: " + duration + " segundos";
+  result.appendChild(details);
+
+  const note = document.createElement("p");
+  note.textContent =
+    "Esta é uma demonstração. A geração real de vídeos será conectada nas próximas etapas.";
+  result.appendChild(note);
+}
+</script>
+
+</body>
+</html>
